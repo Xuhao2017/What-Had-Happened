@@ -1,3 +1,8 @@
+/**
+* @author gotaly
+* @data	2012-08-9
+* @email gotawork@163.com
+*/
 #ifndef W2H_DIR_H
 #define W2H_DIR_H
 

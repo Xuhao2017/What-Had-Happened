@@ -69,8 +69,26 @@ extern void w2h_list_free(w2h_list_t *list);
 extern void w2h_list_del(w2h_list_t *list);
 extern list_iter_t w2h_list_find(void *data);
 extern list_iter_t w2h_list_iter_find(w2h_list_t *list,list_iter_t data_iter);
+/** 
+* find first element suitable user define function
+* @param list : cotain elemants
+* @param dst : a param for fun
+* @param fun : user define function
+* @return first suitable element iter ,NULL on no one
+*/
 extern list_iter_t w2h_list_user_find(w2h_list_t *list,void *dst,suitable_fun_t fun);
+/**
+* do fun for every element in list
+* use element as a parament for deal_fun_t fun 
+* @param list: list contain element
+* @param fun: user define deal_fun_t fun  
+*/
 extern void w2h_list_foreach(w2h_list_t *list,deal_fun_t fun);
+/**
+* get data domain in iter 
+* @param iter: a point
+* @return : data domain
+*/
 extern void *w2h_list_containof(list_iter_t iter);
 
 
