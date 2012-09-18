@@ -1,0 +1,8 @@
+env = Environment()
+env["CPPPATH"] = Split("./ ../src")
+env["CPPFLAGS"] = Split("-g -Wall")
+env["LIBS"] = Split("lua m dl")
+
+example0= ["example0.c"]
+example0 += Glob("../src/*.c")
+env.Program("example0",example0)

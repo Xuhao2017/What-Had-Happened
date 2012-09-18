@@ -141,6 +141,7 @@ int w2h_init(char *file)
 
 	init_config_list();	
 	res = read_config(file);
+
 	if (res)
 		return -1;
 	prepare_guard_thread();

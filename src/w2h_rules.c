@@ -140,7 +140,8 @@ int w2h_rules_fill_logfile_name(w2h_rules_t *rule)
 		logfile_cur += strlen(buf);
 		memset(buf,0,sizeof(int)+1);
 	}
-
+	if (index < 0)
+		index = 0;
 	memcpy(logfile_name+logfile_cur,rule->format.logfile_name+index,len-index);
 	logfile_cur += len-index;
 

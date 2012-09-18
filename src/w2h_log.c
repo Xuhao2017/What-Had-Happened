@@ -45,7 +45,7 @@ static void cpy_fmt(w2h_rules_t *rules,w2h_format_t *fmt)
 
 	if (NULL != fmt->app_name){
 		rules->app_name= malloc(strlen(fmt->app_name) + sizeof(char));
-		memcpy(rules->tag,fmt->tag,strlen(fmt->tag) + sizeof(char));
+		memcpy(rules->app_name,fmt->app_name,strlen(fmt->app_name) + sizeof(char));
 	}
 
 	rules->pid  = getpid();
@@ -56,14 +56,23 @@ static void add_classes(w2h_rules_t *rules,char *classes)
 	char class[MAX_NAME_LEN];
 	int word = 0;
 
-	while (word < strlen(classes) +sizeof(char) +1){
+	while (word < strlen(classes)){
+		while (' ' == *(classes + word) || '\t' == *(classes+word) ){
+			word++;
+			continue;
+		}
+		if ('\0' == *(classes+word))
+			break;
 		int word_len = 0;
-		while(' ' != *(classes+word+word_len) || '\0' != *(classes+word+word_len))
+		while(' ' != *(classes+word+word_len) ){
 			word_len++;
+			if ( '\0' == *(classes+word+word_len))
+				break;
+		}
 		memcpy(class,classes+word,word_len);
-		*(class+word_len +1) = '\0';
+		*(class+word_len ) = '\0';
 
-		list_iter_t fmt_i = w2h_list_user_find(config_id_a,class,suitable_format);  
+		list_iter_t fmt_i = w2h_list_user_find(config_class_a,class,suitable_format);  
 		w2h_format_t *fmt = (w2h_format_t *)fmt_i->data;
 		cpy_fmt(rules,fmt);
 

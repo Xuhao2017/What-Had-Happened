@@ -22,17 +22,17 @@ static int prepare_file(char *file)
 		return 1;	
 	}
 
-	char *dir;
 
 	if ( !(w2h_file_exist(file))){
+		char *dir;
 		dir = w2h_get_dir(file);		
 		if( !(w2h_file_exist(dir))){
 			if( (w2h_make_dir(dir)))
 				return -1;
 		}
 
+		free(dir);
 	}
-	free(dir);
 	return w2h_file_open(file); 
 }
 

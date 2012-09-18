@@ -1,0 +1,11 @@
+class.debug = {
+	logfile_name = "$T.log",
+	tag = "debug",
+	time = "%y-%M-%d",
+	app_name = "example0",
+	data = "$t $T  $m",
+}
+
+id.debug_0 = {
+	tag = "debug_0",
+}
